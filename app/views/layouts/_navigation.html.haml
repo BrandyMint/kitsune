@@ -5,6 +5,8 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to Settings.app.title, root_url, :class => 'navbar-brand'
-    .collapse.navbar-collapse
+    = link_to Settings.app.title, root_url, :class => 'navbar-brand'
+    %span.btn.btn.btn-danger.btn-lg{ role: 'kitsune-button'} K!
+    .collapse.navbar-collapse.pull-right
       = render_navigation :expand_all => true, :renderer => :bootstrap
+    .clearfix

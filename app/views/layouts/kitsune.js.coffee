@@ -3,35 +3,32 @@
 window.Kitsune ||= {}
 
 $ ->
-
   Kitsune.options =
-    rules: <%= site.rules.pluck(:phrase, :link).to_json.html_safe %>
+    commands: <%= site.rules.pluck(:phrase, :link).to_json.html_safe %>
     language: '<%= site.language.code %>'
-  #sites:
-  #rules:
-  #
-  #index:
-  #  url: "/"
-    commands:
-      "окно": ->
-        alert 'окно'
+    button: '[role="kitsune-button"]'
 
-  #commands = "show tps report": ->
-  #$("#tpsreport").show()
-  #return
 
-  if annyang
-    #commands_list = Kitsune.options.commands_list
-    options = Kitsune.options
-    commands = options.commands
-    #for c of commands_list
-    #  console.log c
-    #  commands c.commands
-    #  console.log c.commands
+  gotoURL = (url) ->
+    window.location.href = url
 
-    annyang.setLanguage options.language
-    annyang.addCommands commands
+  commands = Kitsune.options.commands
+  anyang_commands = {}
+  for c in commands
+    anyang_commands[c[0]] = ( -> gotoURL(c[1]) )
 
+  Kitsune.anyang_commands = anyang_commands
+  console.log Kitsune.anyang_commands
+
+  annyang.setLanguage Kitsune.options.language
+  annyang.addCommands anyang_commands
+
+  unless Kitsune.options.button?
+    style = "position: absolute; padding: 10px; font-size: 16px; background: #d9534f;"
+    $('body').append("<div class='kitsune-button' role='kitsune-app-button' style='#{style}'>K!</div>")
+    Kitsune.options.button = "[role='kitsune-app-button']"
+
+  $(Kitsune.options.button).on 'click', () ->
     annyang.start()
 
-  return
+
