@@ -2,7 +2,7 @@ defaults: &defaults
   app:
     title: Kitsune
 
-    asset_host: http://Kitsune.icfdev.ru/
+    asset_host: http://kitsune.sibapps.ru
 
     default_url_options: &default_url_options
       host: HOSTNAME
