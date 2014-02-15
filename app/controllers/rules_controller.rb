@@ -20,7 +20,7 @@ class RulesController < ApplicationController
   def create
     @rule = Rule.new(rule_params)
     if @rule.save
-      redirect_to site_rule_path(@rule), notice: 'Rule was successfully created.'
+      redirect_to site_rule_path(@site, @rule), notice: 'Rule was successfully created.'
     else
       render action: 'new'
     end
@@ -28,7 +28,7 @@ class RulesController < ApplicationController
 
   def update
     if @rule.update(rule_params)
-      redirect_to site_rule_path(@rule), notice: 'Rule was successfully updated.'
+      redirect_to site_rule_path(@site, @rule), notice: 'Rule was successfully updated.'
     else
       render action: 'edit'
     end
