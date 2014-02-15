@@ -21,7 +21,8 @@ class Site < ActiveRecord::Base
   end
 
   def cjs_url
-    "#{Settings.app.asset_host}/cjs/#{access_token}.js"
+    #"#{Settings.app.asset_host}/cjs/#{access_token}.js"
+    "#{Settings.app.asset_host}/sites/#{self.id}/kitsune.js"
   end
 
 

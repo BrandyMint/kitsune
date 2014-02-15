@@ -1,6 +1,7 @@
 Kitsune::Application.routes.draw do
   resources :sites do
     resources :rules
+    get 'kitsune', :on=>:member
   end
 
   devise_for :users

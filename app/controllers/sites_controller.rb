@@ -38,6 +38,10 @@ class SitesController < ApplicationController
     redirect_to sites_url
   end
 
+  def kitsune
+    render 'layouts/kitsune', :locals=>{:site=>@site}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_site
