@@ -21,7 +21,7 @@ development:
   <<: *defaults
   app:
     title: Kitsune
-    asset_host: http://localost:3000
+    asset_host: http://localhost:3000
     default_url_options:
       host: http://localhost
       port: 3000

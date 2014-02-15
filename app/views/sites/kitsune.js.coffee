@@ -1,25 +1,22 @@
 window.Kitsune ||= {}
 
-<% environment.context_class.instance_eval { include ScriptHelper } %>
-<% current_site = Site.last %>
-
 $ ->
 
   Kitsune.options =
-    rules: '<%= site_rules_json(current_site) %>'
-    language: '<%= site_language(current_site) %>'
-    #sites:
-    #rules: 
-    #
-      #index:
-      #  url: "/"
+    rules: <%= @site.rules.pluck(:phrase, :link).to_json.html_safe %>
+    language: '<%= @site.language.code %>'
+  #sites:
+  #rules:
+  #
+  #index:
+  #  url: "/"
     commands:
       "окно": ->
         alert 'окно'
 
   #commands = "show tps report": ->
-    #$("#tpsreport").show()
-    #return
+  #$("#tpsreport").show()
+  #return
 
   if annyang
     #commands_list = Kitsune.options.commands_list

@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_site, only: [:show, :edit, :update, :destroy]
+  before_action :set_site, only: [:show, :edit, :update, :destroy, :kitsune]
 
   def index
     @sites = Site.all
@@ -36,6 +36,13 @@ class SitesController < ApplicationController
   def destroy
     @site.destroy
     redirect_to sites_url
+  end
+
+  def kitsune
+    respond_to do |format|
+      format.js
+    end
+    #render 'kitsune.js.cofee.erb'
   end
 
   private
