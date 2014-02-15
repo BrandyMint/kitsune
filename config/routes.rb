@@ -1,4 +1,6 @@
 Kitsune::Application.routes.draw do
+  resources :sites
+
   devise_for :users
   self.default_url_options Settings.app.default_url_options.symbolize_keys
 
