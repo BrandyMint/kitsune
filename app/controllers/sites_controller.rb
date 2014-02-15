@@ -38,13 +38,6 @@ class SitesController < ApplicationController
     redirect_to sites_url
   end
 
-  def kitsune
-    respond_to do |format|
-      format.js
-    end
-    #render 'kitsune.js.cofee.erb'
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_site

@@ -6,9 +6,11 @@ class Site < ActiveRecord::Base
   belongs_to :language
 
   validates :name, :language, :presence => true
+  after_save :generate_cjs
 
   def generate_cjs
-
+    js_content = Renderer.render template: 'layouts/kitsune', locals: { site: self }
+    File.open(cjs_file_path, 'w') {|file| file.write(js_content)}
     FileUtils.chmod 0755, cjs_file_path
   end
 
@@ -16,6 +18,10 @@ class Site < ActiveRecord::Base
     if File.exists?(cjs_file_path)
       FileUtils.rm(cjs_file_path)
     end
+  end
+
+  def cjs_url
+    "#{Settings.app.asset_host}/cjs/#{access_token}.js"
   end
 
 

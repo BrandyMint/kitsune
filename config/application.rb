@@ -24,5 +24,9 @@ module Kitsune
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    config.autoload_paths += Dir[
+      "#{Rails.root}/app/services"
+    ]
   end
 end

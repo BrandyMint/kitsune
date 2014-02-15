@@ -1,10 +1,12 @@
+`<%= Kitsune::Application.assets.find_asset('annyang.js').body.html_safe %>`
+
 window.Kitsune ||= {}
 
 $ ->
 
   Kitsune.options =
-    rules: <%= @site.rules.pluck(:phrase, :link).to_json.html_safe %>
-    language: '<%= @site.language.code %>'
+    rules: <%= site.rules.pluck(:phrase, :link).to_json.html_safe %>
+    language: '<%= site.language.code %>'
   #sites:
   #rules:
   #
