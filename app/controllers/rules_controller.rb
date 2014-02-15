@@ -4,7 +4,7 @@ class RulesController < ApplicationController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rules = Rule.all
+    @rules = @site.rules
   end
 
   def show
