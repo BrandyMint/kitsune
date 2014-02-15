@@ -25,15 +25,4 @@ module ApplicationHelper
     content_tag :span, count, options
   end
 
-  def list_sites
-    out = ''
-    Site.all.each do |s|
-      out << s.name
-      s.rules.each do |r|
-        out << r
-      end
-    end
-    out
-  end
-
 end

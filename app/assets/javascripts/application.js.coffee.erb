@@ -4,40 +4,6 @@
 #= require turbolinks
 #= require bootstrap
 #= require annyang
-
-<% environment.context_class.instance_eval { include ApplicationHelper } %>
-
-$ ->
-  sites = "<%= list_sites %>"
-
-  window.options =
-    language: "ru-RU"
-    #sites:
-    #rules: 
-    #
-      #index:
-      #  url: "/"
-    commands:
-      "окно": ->
-        alert 'окно'
-
-  #commands = "show tps report": ->
-    #$("#tpsreport").show()
-    #return
-
-  if annyang
-    #commands_list = window.options.commands_list
-    options = window.options
-    commands = options.commands
-    #for c of commands_list
-    #  console.log c
-    #  commands c.commands
-    #  console.log c.commands
-
-    annyang.setLanguage options.language
-    annyang.addCommands commands
-
-    annyang.start()
+#= require kitsune
 
 
-  return
