@@ -9,5 +9,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
     # you can turn off auto highlighting for a specific level
     primary.auto_highlight = true
+
+    if user_signed_in?
+      primary.item :sing_out, 'Выйти', destroy_user_session_path, :method => :delete, :options => {:method => :delete}
+    else
+      primary.item :sing_in, 'Войти', new_user_session_path
+    end
   end
 end

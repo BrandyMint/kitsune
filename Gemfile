@@ -121,6 +121,7 @@ gem 'coffee-rails', github: 'rails/coffee-rails'
 # gem 'jquery_datepicker'
 
 # gem 'select2-rails'
+gem 'devise'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

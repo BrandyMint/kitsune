@@ -1,4 +1,5 @@
 Kitsune::Application.routes.draw do
+  devise_for :users
   self.default_url_options Settings.app.default_url_options.symbolize_keys
 
   devise_for :admin_users, ActiveAdmin::Devise.config
