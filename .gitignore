@@ -8,6 +8,7 @@ doc/*
 .yardoc
 log/*
 public/assets/
+public/cjs/
 tags
 tmp/
 .sass-cache/
