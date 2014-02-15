@@ -36,7 +36,7 @@ class RulesController < ApplicationController
 
   def destroy
     @rule.destroy
-    redirect_to rules_url
+    redirect_to site_rules_path(@site)
   end
 
   private
