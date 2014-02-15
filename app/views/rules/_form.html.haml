@@ -1,4 +1,4 @@
-= simple_form_for @rule, :url=> site_rule_path(@site, @rule) do |f|
+= simple_form_for [@site, @rule] do |f|
   = f.error_notification
 
   = f.input :phrase
