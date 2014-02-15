@@ -9,7 +9,7 @@ class Site < ActiveRecord::Base
   after_save :generate_cjs
 
   def generate_cjs
-    js_content = Renderer.render template: 'layouts/kitsune', locals: { site: self }
+    js_content = Uglifier.new.compile(Renderer.render template: 'layouts/kitsune', locals: { site: self })
     File.open(cjs_file_path, 'w') {|file| file.write(js_content)}
     FileUtils.chmod 0755, cjs_file_path
   end
