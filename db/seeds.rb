@@ -6,8 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Language.destroy_all
 Site.destroy_all
 
-Language.create(:name=>'Русский', :code=>'ru_RU')
+
+Language.create(:name=>'Русский', :code=>'ru-RU')
 User.last.sites.create(:name=>'Тестовый сайт', :language=>Language.first)
 User.last.sites.last.rules.create([{:phrase=>"привет", :link=>'/hello'}, {:phrase=>'пока', :link=>'/bye'}])
