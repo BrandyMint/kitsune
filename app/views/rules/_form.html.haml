@@ -1,0 +1,7 @@
+= simple_form_for [:site, @rule] do |f|
+  = f.error_notification
+
+    = f.input :phrase
+    = f.input :link
+  .actions
+    = f.submit 'Save'

@@ -5,6 +5,8 @@ class Site < ActiveRecord::Base
   belongs_to :user
   belongs_to :language
 
+  validates :name, :language, :presence => true
+
   def generate_cjs
 
     FileUtils.chmod 0755, cjs_file_path

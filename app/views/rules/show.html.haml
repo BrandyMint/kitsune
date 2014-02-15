@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Phrase:
+  = @rule.phrase
+%p
+  %b Link:
+  = @rule.link
+
+= link_to 'Edit', site_edit_rule_path(@rule)
+\|
+= link_to 'Back', site_rules_path

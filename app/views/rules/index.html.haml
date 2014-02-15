@@ -1,0 +1,23 @@
+%h1 Listing rules
+
+%table
+  %tr
+    %th Phrase
+    %th Link
+    %th
+    %th
+    %th
+
+  - @rules.each do |rule|
+    %tr
+      %td= rule.phrase
+      %td= rule.link
+      %td= link_to 'Show', site_rule_path(@site,rule)
+      %td= link_to 'Edit', edit_site_rule_path(@site, rule)
+      %td= link_to 'Destroy', site_rule_path(@site, rule), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Site', site_path(@site)
+\|
+= link_to 'New Rule', new_site_rule_path

@@ -1,16 +1,7 @@
-= form_for @site do |f|
-  - if @site.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@site.errors.count, "error")} prohibited this site from being saved:"
-      %ul
-        - @site.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @site do |f|
+  = f.error_notification
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :language
-    = f.text_field :language
+  = f.input :name
+  = f.input :language, :collection => Language.pluck(:name, :id), :include_blank => false
   .actions
     = f.submit 'Save'
