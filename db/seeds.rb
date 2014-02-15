@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Language.create(:name=>'Русский', :code=>'ru_RU')
+site = Site.create(:name=>'Тестовый сайт', :language=>Language.first)
+site.rules.create([{:phrase=>"hello", :link=>'/hello'}, {:phrase=>'/bye', :link=>'bye'}])
