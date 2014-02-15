@@ -4,7 +4,23 @@ class Site < ActiveRecord::Base
   belongs_to :user
   belongs_to :language
 
+  def generate_cjs
+
+    FileUtils.chmod 0755, cjs_file_path
+  end
+
+  def remove_cjs
+    if File.exists?(cjs_file_path)
+      FileUtils.rm(cjs_file_path)
+    end
+  end
+
+
   private
+
+  def cjs_file_path
+    Rails.root.join('public').join('cjs').join("#{access_token}.js")
+  end
 
   def generate_access_token
     begin
