@@ -18,7 +18,7 @@ class RulesController < ApplicationController
   end
 
   def create
-    @rule = Rule.new(rule_params)
+    @rule = @site.rules.new(rule_params)
     if @rule.save
       redirect_to site_rule_path(@site, @rule), notice: 'Rule was successfully created.'
     else
