@@ -1,5 +1,6 @@
 class Site < ActiveRecord::Base
   before_create :generate_access_token
+  has_many :rules
 
   belongs_to :user
   belongs_to :language
