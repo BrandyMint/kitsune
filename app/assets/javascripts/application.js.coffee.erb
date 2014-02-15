@@ -1,0 +1,52 @@
+#= require jquery
+#= require jquery_ujs
+#= require jquery.turbolinks
+#= require turbolinks
+#= require bootstrap
+#= require annyang
+
+
+$ ->
+  root = @
+
+  SpeechRecognition = root.SpeechRecognition ||
+    root.webkitSpeechRecognition ||
+    root.mozSpeechRecognition ||
+    root.msSpeechRecognition ||
+    root.oSpeechRecognition
+
+  if (!SpeechRecognition)
+    root.annyang = null
+
+  window.options =
+    #host: <% %>
+    #lang: 'ru_RU'
+    #commands_list:
+      #index:
+      #  url: "/"
+    commands:
+      "окно": ->
+        alert 'окно'
+
+  #commands = "show tps report": ->
+    #$("#tpsreport").show()
+    #return
+
+  if annyang
+    # Let's define a command.
+    #commands_list = window.options.commands_list
+    # Add our commands to annyang
+    commands = window.options.commands
+    #for c of commands_list
+    #  console.log c
+    #  commands c.commands
+    #  console.log c.commands
+
+
+    annyang.addCommands commands
+    # Start listening
+
+    annyang.start()
+
+
+  return

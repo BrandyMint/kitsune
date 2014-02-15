@@ -19,6 +19,12 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  app:
+    title: Kitsune
+    asset_host: http://localost:3000
+    default_url_options:
+      host: http://localhost
+      port: 3000
   action_mailer:
     <<: *action_mailer
     delivery_method: :smtp
