@@ -5,23 +5,16 @@
 #= require bootstrap
 #= require annyang
 
+<% environment.context_class.instance_eval { include ApplicationHelper } %>
 
 $ ->
-  root = @
-
-  SpeechRecognition = root.SpeechRecognition ||
-    root.webkitSpeechRecognition ||
-    root.mozSpeechRecognition ||
-    root.msSpeechRecognition ||
-    root.oSpeechRecognition
-
-  if (!SpeechRecognition)
-    root.annyang = null
+  sites = "<%= list_sites %>"
 
   window.options =
-    #host: <% %>
-    #lang: 'ru_RU'
-    #commands_list:
+    language: "ru-RU"
+    #sites:
+    #rules: 
+    #
       #index:
       #  url: "/"
     commands:
@@ -33,18 +26,16 @@ $ ->
     #return
 
   if annyang
-    # Let's define a command.
     #commands_list = window.options.commands_list
-    # Add our commands to annyang
-    commands = window.options.commands
+    options = window.options
+    commands = options.commands
     #for c of commands_list
     #  console.log c
     #  commands c.commands
     #  console.log c.commands
 
-
+    annyang.setLanguage options.language
     annyang.addCommands commands
-    # Start listening
 
     annyang.start()
 
